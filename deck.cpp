@@ -9,8 +9,13 @@
 
 using namespace std;
 
-const string Deck::suits[4] = {"club", "diamond", "spade", "heart"};
+
 Deck::Deck(){
+	suits[0] = "club";
+	suits[1] = "diamond";
+	suits[2] = "spade";
+	suits[3] = "heart";
+
 	for (int i = 0; i < 4; ++i)
 	{
 		string suit = suits[i];
@@ -22,7 +27,16 @@ Deck::Deck(){
 	}
 	shuffle();
 }
-
+int myrandom (int i) { return rand()%i;}
 void Deck::shuffle(){
-	random_shuffle(deck.begin(),deck.end());
+	srand ( unsigned ( time(0) ) );
+/*	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	vector<Card> temp(52);
+	int s = deck.size()
+	for (int i = 0; i < s; ++i)
+	{
+		int r = rand()%(s);
+		temp[i] = deck[]
+	}*/
+	random_shuffle(deck.begin(),deck.end(),myrandom);
 }

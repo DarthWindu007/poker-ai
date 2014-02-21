@@ -10,7 +10,8 @@ using namespace std;
 
 class Deck
 {
-static const string suits[4];
+private:
+	string suits[4];
 public:
 	vector<Card> deck;
 	Deck();
