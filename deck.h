@@ -16,6 +16,7 @@ public:
 	vector<Card> deck;
 	Deck();
 	void shuffle();
+	Card getCard();
 	friend ostream &operator<<(ostream &out, Deck d)     //output
 	{
 		for (int i = 0; i < d.deck.size(); ++i)

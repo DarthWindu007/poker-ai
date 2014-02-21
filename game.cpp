@@ -38,9 +38,21 @@ void shuffle()
 	game_deck.shuffle();
 }
 
+void deal()
+{
+	for (int i = 0; i < players.size(); ++i)
+	{
+		players[i].hand[0] = game_deck.getCard();
+		players[i].hand[1] = game_deck.getCard();
+	}
+}
+
 void game()
 {
 	shuffle();
+		cout << players[0] << endl;
+	cout << players[1] << endl;
+	deal();
 }
 
 int main(int argc, char const *argv[])
@@ -60,5 +72,7 @@ int main(int argc, char const *argv[])
 		end_game = true;
 	}
 	cout << game_deck << endl;
+	cout << players[0] << endl;
+	cout << players[1] << endl;
 	return 0;
 }

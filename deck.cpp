@@ -40,3 +40,9 @@ void Deck::shuffle(){
 	}*/
 	random_shuffle(deck.begin(),deck.end(),myrandom);
 }
+Card Deck::getCard()
+{
+	Card c = deck.back();
+	deck.pop_back();
+	return c;
+}
