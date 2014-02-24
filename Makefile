@@ -3,7 +3,7 @@ CC = g++ -g -O3
 INCLUDES=-I/usr/local/g2/include
 
 RM = /bin/rm -f 
-OBJS = card.o deck.o player.o
+OBJS = card.o deck.o player.o pot.o sharedcards.o
 main: $(OBJS)
 	$(CC) -o game game.cpp $(OBJS)
 	

@@ -38,7 +38,7 @@ void shuffle()
 	game_deck.shuffle();
 }
 
-void deal()
+void deal_to_players()
 {
 	for (int i = 0; i < players.size(); ++i)
 	{
@@ -52,7 +52,7 @@ void game()
 	shuffle();
 		cout << players[0] << endl;
 	cout << players[1] << endl;
-	deal();
+	deal_to_players();
 }
 
 int main(int argc, char const *argv[])
