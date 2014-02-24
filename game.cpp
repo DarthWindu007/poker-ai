@@ -3,76 +3,22 @@
 #include "card.h"
 #include "deck.h"
 #include "player.h"
+#include "sharedcards.h"
+#include "pot.h"
+#include "game.h"
 #include <ctime>
 #include <cstdlib>
 
 using namespace std;
 
-int num_players;
-vector<Player> players;
-bool end_game = false;
-Deck game_deck;
-
-void init()
+Game::Game()
 {
-	cout << "How many players? ";
-	cin >> num_players;
-	if (num_players < 2)
-	{
-		cout << "Insufficient number of players" << endl;
-		init();
-		return;
-	}
-	for (int i = 0; i < num_players; ++i)
-	{
-		cout << i+1 << " Player name? ";
-		string pname;
-		cin >> pname;
-		Player newp(1000, pname);
-		players.push_back(newp);
-	}
+	pot = Pot();
+	shared = SharedCards();
 }
 
-void shuffle()
+Game::Game(Pot p, SharedCards s)
 {
-	game_deck.shuffle();
-}
-
-void deal_to_players()
-{
-	for (int i = 0; i < players.size(); ++i)
-	{
-		players[i].hand[0] = game_deck.getCard();
-		players[i].hand[1] = game_deck.getCard();
-	}
-}
-
-void game()
-{
-	shuffle();
-		cout << players[0] << endl;
-	cout << players[1] << endl;
-	deal_to_players();
-}
-
-int main(int argc, char const *argv[])
-{
-/*	cout << "wat" << endl;
-	Card c(1,"clubs");
-	cout << c << endl;
-	Deck d;
-	cout << d << endl;
-	Player p1(100,"Eswar");
-	cout<<p1<<endl;*/
-	//cout << "wat"<<endl;
-	init();
-	while(!end_game)
-	{
-		game();
-		end_game = true;
-	}
-	cout << game_deck << endl;
-	cout << players[0] << endl;
-	cout << players[1] << endl;
-	return 0;
+	pot=p;
+	shared=s;
 }

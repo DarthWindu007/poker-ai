@@ -16,7 +16,7 @@ public:
 	Player();
 	friend ostream &operator<<(ostream &out, Player p)     //output
 	{
-        out<< p.money << " " << p.name <<"\n"<< p.hand[0] << p.hand[1] << "\n";
+        out<< p.money << " " << p.name <<"\n"<< p.hand[0] << "\n" << p.hand[1] << "\n";
         return out;
 	}
 };

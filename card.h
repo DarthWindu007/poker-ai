@@ -17,17 +17,17 @@ public:
 		if (c.n==1 || c.n > 10)
 		{
 			if(c.n==1)
-				out<< "A" << " " << c.s <<"\n";
+				out<< "A" << " " << c.s;
 			else if(c.n == 11)
-				out<< "J" << " " << c.s <<"\n";
+				out<< "J" << " " << c.s;
 			else if(c.n == 12)
-				out<< "Q" << " " << c.s <<"\n";
+				out<< "Q" << " " << c.s;
 			else if(c.n == 13)
-				out<< "K" << " " << c.s <<"\n";
+				out<< "K" << " " << c.s;
 		}
 		else
 		{
-        	out<< c.n << " " << c.s <<"\n";
+        	out<< c.n << " " << c.s;
         }
         return out;
 	}
