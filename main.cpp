@@ -11,21 +11,25 @@
 
 using namespace std;
 
-int num_players;
+int num_players=0;
 vector<Player> players;
 bool end_game = false;
 Deck game_deck;
 Game tgame;
+int plb=0;
 
 void init()
 {
-	cout << "How many players? ";
-	cin >> num_players;
-	if (num_players < 2)
+	while(num_players < 2 || cin.fail() || num_players > 8)
 	{
-		cout << "Insufficient number of players" << endl;
-		init();
-		return;
+		cout << "How many players? ";
+		cin >> num_players;
+		if (num_players < 2 || cin.fail() || num_players > 8)
+		{
+			cout << "Insufficient number of players or non-numeric value" << endl;
+			cin.clear();
+			cin.ignore(256, '\n');
+		}
 	}
 	for (int i = 0; i < num_players; ++i)
 	{
@@ -40,6 +44,27 @@ void init()
 void shuffle()
 {
 	game_deck.shuffle();
+}
+
+void get_blinds()
+{
+	if(tgame.isStart)
+	{
+		plb = rand()%players.size();
+		tgame.isStart = false;
+	}
+	else
+		plb++;
+	cout << plb << endl;
+
+	cout << players[plb].name << ", you are the dealer" << endl;
+	cout << players[(plb+1)%players.size()].name << ", you are the small blind" << endl;
+	cout << players[(plb+2)%players.size()].name << ", you are the big blind" << endl;
+	players[plb+1].money -= tgame.sb;
+	tgame.pot.money += tgame.sb;
+	players[plb+2].money -= tgame.bb;
+	tgame.pot.money += tgame.bb;
+	cout << tgame.pot.money << " pot moneu" << endl;
 }
 
 void deal_to_players()
@@ -69,12 +94,19 @@ void deal_shared()
 	}
 }
 
+void bettings()
+{
+	
+}
+
 void game()
 {
 	tgame = Game();
 	shuffle();
+	get_blinds();
 	deal_to_players();
 	deal_shared();
+	bettings();
 	cout << tgame.shared << endl;
 }
 
@@ -95,7 +127,9 @@ int main(int argc, char const *argv[])
 		end_game = true;
 	}
 	//cout << game_deck << endl;
-	cout << players[0] << endl;
-	cout << players[1] << endl;
+	for(int i = 0; i < players.size(); i++)
+	{
+		cout << players[i] << endl;
+	}
 	return 0;
 }

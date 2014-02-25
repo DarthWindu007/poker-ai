@@ -14,6 +14,9 @@ class Game
 public:
 	Pot pot;
 	SharedCards shared;
+	bool isStart;
+	int bb;
+	int sb;
 	Game(Pot p, SharedCards s);
 	Game();
 	friend ostream &operator<<(ostream &out, Game g)     //output

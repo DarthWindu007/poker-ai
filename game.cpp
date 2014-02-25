@@ -15,10 +15,16 @@ Game::Game()
 {
 	pot = Pot();
 	shared = SharedCards();
+	isStart=true;
+	bb = 2;
+	sb = 1;
 }
 
 Game::Game(Pot p, SharedCards s)
 {
 	pot=p;
 	shared=s;
+	isStart=true;
+	bb = 2;
+	sb = 1;
 }
